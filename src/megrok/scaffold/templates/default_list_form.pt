@@ -1,0 +1,41 @@
+<html xmlns="http://www.w3.org/1999/xhtml" tal:omit-tag="exists:view/aspage">
+<body tal:omit-tag="exists:view/aspage">
+<div id="list-model" class="scaffold-list" tal:attributes="id python:'list-%s' % view.controller.modelname.replace(' ', '-').lower()">
+<form action="." tal:attributes="action request/URL" method="post"
+      class="list-form" enctype="multipart/form-data"
+      tal:define="batch view/renderBatch">
+
+  <h1 i18n:translate=""
+    tal:condition="view/label"
+    tal:content="view/label">Label</h1>
+
+  <div class="form-status"
+    tal:define="status view/status"
+    tal:condition="status">
+
+    <div i18n:translate="" tal:content="view/status">
+      Form status summary
+    </div>
+
+    <ul class="errors" tal:condition="view/errors">
+      <li tal:repeat="error view/error_views">
+         <span tal:replace="structure error">Error Type</span>
+      </li>
+    </ul>
+  </div>
+  
+  <tal:block replace="structure view/renderTable">table</tal:block>
+  <div class="batch" tal:condition="batch">
+    <tal:block replace="structure batch">table</tal:block>
+  </div>
+  <div id="actionsView" tal:condition="view/availableActions">
+    <span class="actionButtons">
+      <input tal:repeat="action view/actions"
+             tal:replace="structure action/render"
+             />
+    </span>
+  </div>
+</form>
+</div>
+</body>
+</html>

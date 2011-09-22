@@ -1,0 +1,13 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:grok="http://namespaces.zope.org/grok"
+    xmlns:z3c="http://namespaces.zope.org/z3c">
+
+	<include package="megrok.layout" file="meta.zcml" />
+	
+	<include package="grokcore.view" />
+  	<include package="grokcore.formlib" />
+	<include package="z3c.table" />
+	
+
+</configure>

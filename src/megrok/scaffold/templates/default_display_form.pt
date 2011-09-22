@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" tal:omit-tag="exists:view/aspage">
+<body tal:omit-tag="exists:view/aspage">
+<div id="display-model" class="scaffold-display" tal:attributes="id python:'display-%s' % view.controller.modelname.replace(' ', '-').lower()">
+  <h1 i18n:translate=""
+    tal:condition="view/label"
+    tal:content="view/label">Label</h1>
+
+  <table class="listing">
+    <thead>
+      <tr>
+        <th class="label-column">&nbsp;</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tal:block repeat="widget view/widgets">
+        <tr tal:define="odd repeat/widget/odd"
+          tal:attributes="class python: odd and 'odd' or 'even'">
+          <td class="fieldname">
+            <tal:block content="widget/label"/>
+          </td>
+          <td>
+            <input tal:replace="structure widget" />
+          </td>
+        </tr>
+      </tal:block>
+    </tbody>
+  </table>
+
+	<form action="." tal:attributes="action request/URL" method="post"
+	      class="display-form" enctype="multipart/form-data">
+	  <div id="actionsView">
+	    <span class="actionButtons" tal:condition="view/availableActions">
+	      <input tal:repeat="action view/actions"
+	             tal:replace="structure action/render"
+	             />
+	    </span>
+	  </div>
+	</form>
+</div>
+</body>
+</html>
