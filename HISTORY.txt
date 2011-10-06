@@ -1,6 +1,10 @@
 Changelog
 =========
 
+0.3
+-----------------
+- List view table now uses field's titles as columns headers
+
 0.2
 ------------------
 

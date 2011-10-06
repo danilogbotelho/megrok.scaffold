@@ -331,7 +331,7 @@ class ListForm(BaseForm, FormTable):
                 BaseColumn = table.column.GetAttrColumn
             class GetFieldColumn(BaseColumn):
                 attrName = field_name
-            cols.append(table.column.addColumn(self, GetFieldColumn, field_name, header=field_name.capitalize()))        
+            cols.append(table.column.addColumn(self, GetFieldColumn, field_name, header=field.field.title))
         return cols
     
     @property
