@@ -44,7 +44,7 @@ class IController(Interface):
     
     request = Attribute("""The request""")
     
-    context = Attribute("""The view's context """)
+    context = Attribute("""The controller's context """)
     
     allow_edit = Attribute("""Flag to determine whether an Edit action is available in the form""")
     
